@@ -28,9 +28,6 @@ Ruckus is run using the `Makefile` in a target directory. Some of the most usefu
 
 ## Directories
 
-### build_scripts
-Containts .tcl scripts for the creation of the Vivado project and its compilation.
-
 ### targets
 Contains one directory for each targetted device. These target directories are where Ruckus is called and where outputs are stored.
 
