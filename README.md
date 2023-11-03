@@ -1,39 +1,49 @@
-# Example Vivado Project
-This repository provides an example of my typical project structure and build pipeline.
+# Example Ruckus Project
+This repository provides an example of a simple Vivado project using the Ruckus build system.
 
 ## Prerequisites
 
 The user must have Makefile and Vivado tools installed on their machine and accessible in the terminal with the `make` and `vivado` commands, respectively.
 
-## Makefile
-Make provides the majority of the user interface in this project. The available make recipes are summarized below.
+## Quick Start
+
+### Clone the repository
+`git clone git@gitlab.xonaspace.com:darren/example_ruckus_project.git`
+
+### Run Ruckus to build the project
+```bash
+cd example_ruckus_project/targets/RFSoC_4x2
+make
+```
+A firmware image should be generated and output to `example_ruckus_project/targets/RFSoC_4x2/images`.
+
+## Makefile recipes
+Ruckus is run using the `Makefile` in a target directory. Some of the most useful recipes are documented below.
 
 | Recipe name | Description | Example call |
 | ---         | ---         | ---          |
-| help        | Prints out all make recipes and their descriptions. This is run by default when make is called without arguments. | `make` |
-| project     | Creates the Vivado project in the _work_ directory, importing sources and generating the block design. | `make project` |
-| build       | Builds the existing Vivado project. `make project` must be run first. Output products (.bit, .xdc, .ltx) are saved in the _outputs_ directory. | `make build` |
-| all         | Runs the project and build recipes, creating the project from source and then generating output products. | `make all` |
-| open_gui    | Opens existing Vivado project in the Vivado GUI. `make project` must be run first. | `make open_gui` |
+| *default*   | Creates Vivado project and generates .bit, .ltx, and .xsa (output to `images`) | `make` |
+| gui         | Creates Vivado project and opens the GUI | `make gui` |
+| interactive | Creates Vivado project and opens in terminal | `make project` |
 
 ## Directories
 
 ### build_scripts
 Containts .tcl scripts for the creation of the Vivado project and its compilation.
 
-### src
-Contains all source files used to create the project.
+### targets
+Contains one directory for each targetted device. These target directories are where Ruckus is called and where outputs are stored.
 
-### outputs
-Containts important outputs from compilation: bitstream (.bit), hardware definition (.xdc), and probes file (.ltx).
+### common
+Contains all sources that are common across platforms
 
-### work
-Contains the actual working project. This entire directory is excluded from version control, and its contents are populated from scratch when `make project` is executed.
+### build
+Contains the actual Vivado project and intermediate build files output by Ruckus. This entire directory is excluded from version control. You may need to create it with `mkdir build` when you first clone the repository.
 
 ## Making Design Changes
-Any changes made to files in the _src_ directory (and its subdirectories) are tracked by git and will be immediately reflected the next time that `make project` is executed.
+Any changes made to source files in the _common_ and _targets_ directories (and subdirectories) are tracked by git and will be immediately reflected the next time that Ruckus is called.
 
-Changes made to the block design in the GUI exist only in the _work_ directory and **must** be exported to _src/bd/design1.tcl_ in order to be captured. The _work_ directory is not tracked by git and will be overwritten the next time `make project` is executed.
+Changes made to the block design in the GUI exist only in the _build_ directory and **must** be exported to _common/bd/design1.tcl_ in order to be captured. The _build_ directory is not tracked by git and may be overwritten the next time Ruckus is called.
 
 ## Notes
 - The included .gigitnore is quite strict, excluding all files not explicitly excepted, so you may need to modify it if you wish to add sources or change the directory structure.
