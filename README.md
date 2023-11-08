@@ -58,39 +58,39 @@ loadRuckusTcl takes one argument, the path to the directory in which the ruckus.
 This procedure is used to load HDL sources into the project. 
 
 **Options**
-| name | example | description |
+| Option Name | Description | Example Call |
 | --- | --- | --- |
-| path | `loadSource -path "$::DIR_PATH/hdl/inverter.vhd"` | Loads one file from a fully-specified path |
-| dir | `loadSource -dir "$::DIR_PATH/hdl"` | Loads all HDL sources in a directory (not recursive) |
-| lib | `loadSource -lib utils -path "$::DIR_PATH/hdl/util_pkg.vhd"` | Specifies library into which to load source |
-| fileType | `loadSource -fileType {VHDL 2008} -path "$::DIR_PATH/hdl/source_using_vhdl2008.vhd"` | Specifies file type of source. Required for VHDL 2008 files. |
+| path | Loads one file from a fully-specified path | `loadSource -path "$::DIR_PATH/hdl/inverter.vhd"` |
+| dir | Loads all HDL sources in a directory (not recursive) | `loadSource -dir "$::DIR_PATH/hdl"` |
+| lib | Specifies library into which to load source | `loadSource -lib utils -path "$::DIR_PATH/hdl/util_pkg.vhd"` |
+| fileType | Specifies file type of source. Required for VHDL 2008 files. | `loadSource -fileType {VHDL 2008} -path "$::DIR_PATH/hdl/source_using_vhdl2008.vhd"` |
 
 ### loadIpCore
 This procedure can be used to load IP sources saves as ".xci" or similar file types into the project. TCL is not supported by this command, but there are workarounds to load IP using TCL scripts (my preferred method.)
 
 **Options**
-| name | example | description |
+| Option Name | Description | Example Call |
 | --- | --- | --- |
-| path | `loadIpCore -path "$::DIR_PATH/ip/ila_0.xci"` | Loads one file from a fully-specified path |
-| dir | `loadIpCore -dir "$::DIR_PATH/ip"` | Loads all ip sources in a directory (not recursive) |
+| path | Loads one file from a fully-specified path | `loadIpCore -path "$::DIR_PATH/ip/ila_0.xci"` |
+| dir | Loads all ip sources in a directory (not recursive) | `loadIpCore -dir "$::DIR_PATH/ip"` |
 
 ### loadBlockDesign
 This procedure is used to load Vivado Block Designs into the project. Either TCL scripts or ".bd" files are accepted. 
 
 **Options**
-| name | example | description |
+| Option Name | Description | Example Call |
 | --- | --- | --- |
-| path | `loadBlockDesign -path "$::DIR_PATH/bd/design_1.bd"` | Loads one file from a fully-specified path |
-| dir | `loadBlockDesign -dir "$::DIR_PATH/bd"` | Loads all block design sources in a directory (not recursive) |
+| path | Loads one file from a fully-specified path | `loadBlockDesign -path "$::DIR_PATH/bd/design_1.bd"` |
+| dir | Loads all block design sources in a directory (not recursive) | `loadBlockDesign -dir "$::DIR_PATH/bd"` |
 
 ### loadConstraints
 This procedure is used to load constraints files into the project. Both TCL scripts and ".xdc" files are accepted.
 
 **Options**
-| name | example | description |
+| Option Name | Description | Example Call |
 | --- | --- | --- |
-| path | `loadConstraints -path "$::DIR_PATH/constraints/timing_constraints.xdc"` | Loads one file from a fully-specified path |
-| dir | `loadConstraints -dir "$::DIR_PATH/constraints"` | Loads all block design sources in a directory (not recursive) |
+| path | Loads one file from a fully-specified path | `loadConstraints -path "$::DIR_PATH/constraints/timing_constraints.xdc"` |
+| dir | Loads all block design sources in a directory (not recursive) | `loadConstraints -dir "$::DIR_PATH/constraints"` |
 
 ## Notes
 - The included .gigitnore is quite strict, excluding all files not explicitly excepted, so you may need to modify it if you wish to add sources or change the directory structure.
