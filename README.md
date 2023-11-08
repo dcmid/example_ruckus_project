@@ -43,7 +43,16 @@ Any changes made to source files in the _common_ and _targets_ directories (and 
 Changes made to the block design in the GUI exist only in the _build_ directory and **must** be exported to _common/bd/design1.tcl_ in order to be captured. The _build_ directory is not tracked by git and may be overwritten the next time Ruckus is called.
 
 ## ruckus.tcl
-These scripts are used to import sources using the procedures defined by Ruckus. Some of the most important procedures are documented below.
+These scripts are used to import sources using the procedures defined by Ruckus. Some procedures provided by Ruckus for use in this script are documented below.
+
+Note that this script is execured in Vivado with the project opened. As such, any valid Vivado TCL commands can be inserted into the script to achieve custom functionality.
+
+### loadRuckusTcl
+This script calls another ruckus.tcl script. It can be used to build a heirarchy of ruckus.tcl scripts, each importing different sources. For example, `targets/<target>/ruckus.tcl` could load all target-specific sources and then call `common/ruckus.tcl`, which would then either import all common sources itself or call more ruckus.tcl scripts in subdirectories.
+
+loadRuckusTcl takes one argument, the path to the directory in which the ruckus.tcl script to be sourced resides.
+
+**Example call:** `loadRuckusTcl $::env(TOP_DIR)/common`
 
 ### loadSource
 This procedure is used to load HDL sources into the project. 
