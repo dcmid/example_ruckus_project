@@ -42,6 +42,18 @@ Any changes made to source files in the _common_ and _targets_ directories (and 
 
 Changes made to the block design in the GUI exist only in the _build_ directory and **must** be exported to _common/bd/design1.tcl_ in order to be captured. The _build_ directory is not tracked by git and may be overwritten the next time Ruckus is called.
 
+## ruckus.tcl
+These scripts are used to import sources using the procedures defined by Ruckus. Some of the most important procedures are documented below.
+
+### loadSource
+**Args**
+| name | example | description |
+| --- | --- | --- |
+| path | `loadSource -path "$::DIR_PATH/hdl/inverter.vhd"` | Loads one file from a fully-specified path |
+| dir | `loadSource -dir "$::DIR_PATH/hdl"` | Loads all HDL sources in a directory |
+| lib | `loadSource -lib utils -path "$::DIR_PATH/hdl/util_pkg.vhd"` | Specifies library into which to load source |
+| fileType | `loadSource -fileType {VHDL 2008} -path "$::DIR_PATH/hdl/source_using_vhdl2008.vhd"` | Specifies file type of source. Required for VHDL 2008 files. |
+
 ## Notes
 - The included .gigitnore is quite strict, excluding all files not explicitly excepted, so you may need to modify it if you wish to add sources or change the directory structure.
 - When building from the terminal, the use of TMUX is suggested so that the build will continue if your terminal session is interrupted.
