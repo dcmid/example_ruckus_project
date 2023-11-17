@@ -18,5 +18,7 @@
 !targets/*/images/*.ltx
 !targets/*/images/*.xsa
 
+!petalinux/system-user.dtsi
+
 work
 build
